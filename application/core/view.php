@@ -1,5 +1,10 @@
 <?php
 class View{
+  public $log = null;
+
+  public function __construct() {
+  	$this->log = new Log;
+  }
 
   /**
    * @desc 
@@ -12,8 +17,14 @@ class View{
    */
   public function generate($content_view = '', $template_view = '', $param = array(), $data = array(), $i18n = array()) {
     if(!isset($content_view) && !isset($template_view)) {
-      
+      $this->log->write(__DIR__.':'.__LINE__.' Not passed to content_view and template_view. return false');
       return false;
+    }
+
+    if(isset($template_view)) {
+       include 'application/views/'.$template_view;
+    } else {
+       include 'application/views/'.$content_view;
     }
   }
 
