@@ -38,6 +38,24 @@ class Log{
     return $file;
   }
 
+  /**
+   * Получение IP пользователя
+   * @return <String> IP
+   * 
+   */
+  public function getIp() {
+  	$ip = '000.0.0.0';
+    
+    if(isset($_SERVER['REMOTE_ADDR'])) {
+      $ip = $_SERVER['REMOTE_ADDR'];
+    } else if(isset($_SERVER['HTTP_CLIENT_IP'])) {
+      $ip = $_SERVER['HTTP_CLIENT_IP'];
+    }
+
+    return strip_tags($ip);
+  }
+
+
 
   /**
    * Запись в файл
@@ -48,7 +66,13 @@ class Log{
   	if(!isset($text)) {
   	  return false;
   	}
+
   	$file = $this->openFile();
+  	$ip = $this->getIp();
+  	$uid = (isset($_SESSION['uid'])) ? $_SESSION['uid'] : -1;
+  	
+  	$text_write = '['.$this->date['time'].'] '.'['.$ip.'] '.'['.$uid.'] '.$text;//[09.05.2017] [127.0.0.1] [1] Test
+
     fwrite($file, $text);
     flock($file, LOCK_UN);
     fclose($file);
