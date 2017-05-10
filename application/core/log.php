@@ -44,7 +44,7 @@ class Log{
    * 
    */
   public function getIp() {
-  	$ip = '000.0.0.0';
+    $ip = '000.0.0.0';
     
     if(isset($_SERVER['REMOTE_ADDR'])) {
       $ip = $_SERVER['REMOTE_ADDR'];
@@ -70,7 +70,7 @@ class Log{
   	$file = $this->openFile();
   	$ip = $this->getIp();
   	$uid = (isset($_SESSION['uid'])) ? $_SESSION['uid'] : -1;
-  	
+
   	$text_write = '['.$this->date['time'].'] '.'['.$ip.'] '.'['.$uid.'] '.$text;//[09.05.2017] [127.0.0.1] [1] Test
 
     fwrite($file, $text);
