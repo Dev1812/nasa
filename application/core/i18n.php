@@ -23,7 +23,7 @@ class i18n{
 
   /**
    * Открытие языкового файла, также языковой файл помещается в Кеш
-   * @return <Array> Содержимое языкового файла
+   * @return <Array> Содержимое языкового файла 
    */
   private function openLogFile() {
     if(isset($this->cache[$this->lang])) {
