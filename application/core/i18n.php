@@ -10,14 +10,14 @@ class i18n{
 
   public function __construct($lang = '') {
     if(!empty($lang) && mb_strlen($lang) < 3) {
-  	  $this->lang = $lang;
-  	} else {
-  	  $this->lang = User::getLang();
-  	}
+      $this->lang = $lang;
+    } else {
+      $this->lang = User::getLang();
+    }
 
-  	$this->path = SITE_ROOT.'application/i18n/'.$this->lang.'.php';
+    $this->path = SITE_ROOT.'application/i18n/'.$this->lang.'.php';
 
-  	$this->log = new Log;
+    $this->log = new Log;
   } 
   
 
@@ -42,24 +42,24 @@ class i18n{
    * @return <Array> Значения, соответсвующие ключам
    */
   public function get($keys) {
-  	if(!isset($keys)) {
-  	  $this->log->write(__DIR__.':'.__LINE__.' get(): Not passed $keys. return false');
-  	  return false;
-  	}
+    if(!isset($keys)) {
+      $this->log->write(__DIR__.':'.__LINE__.' get(): Not passed $keys. return false');
+      return false;
+    }
 
-  	$lang_file = self::openLogFile();
+    $lang_file = self::openLogFile();
 
-  	if(!is_array($keys)) {
+    if(!is_array($keys)) {
       return $lang_file[$keys];
-  	} else {
-  	  $arr = array();
+    } else {
+      $arr = array();
       foreach($keys as $v) {
         if(!empty($lang_file[$v])) {
           $arr[$v] = $lang_file[$v];
         }
       }
       return $arr;
-  	}
+    }
   }
 
 }
