@@ -1,4 +1,4 @@
-﻿<?php
+<?php
 class i18n{
   private $lang = 'ru';
   private $path = null;
