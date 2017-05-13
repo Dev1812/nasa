@@ -9,7 +9,7 @@ class i18n{
   private $cache = array();
 
   public function __construct($lang = '') {
-  	if(!empty($lang) && mb_strlen($lang) < 3) {
+    if(!empty($lang) && mb_strlen($lang) < 3) {
   	  $this->lang = $lang;
   	} else {
   	  $this->lang = User::getLang();
