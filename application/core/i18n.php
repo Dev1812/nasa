@@ -18,7 +18,7 @@ class i18n{
   	$this->path = SITE_ROOT.'application/i18n/'.$this->lang.'.php';
 
   	$this->log = new Log;
-  }
+  } 
   
 
   /**
